@@ -18,7 +18,7 @@ export default function About() {
     >
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Content Overlay */}
       <div className="absolute inset-0 flex items-center justify-center px-6 z-10">
@@ -27,9 +27,13 @@ export default function About() {
             Nicolas Vivaudou
           </h2>
           <div className="p-8">
-            <p className="text-xl md:text-2xl leading-relaxed">
-              {t('about.biography')}
-            </p>
+            <div className="text-xl md:text-2xl leading-relaxed">
+              {t('about.biography').split('\n\n').map((paragraph, index) => (
+                <p key={index} className="mb-6 last:mb-0">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
