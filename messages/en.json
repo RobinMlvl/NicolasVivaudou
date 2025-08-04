@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "portfolio": "Portfolio",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English"
+  },
+  "portfolio": {
+    "title": "PORTFOLIO",
+    "seeAll": "See all"
+  },
+  "about": {
+    "biography": "Passionate about the art of capturing moments, I am Nicolas Vivaudou, a professional photographer based in France. With over 10 years of experience, I specialize in portrait, event, and landscape photography. My artistic approach combines mastered technique with creative sensitivity to reveal the essence of each moment. Every project is a new adventure for me, an opportunity to tell a unique story through the lens of my camera."
+  }
+}
