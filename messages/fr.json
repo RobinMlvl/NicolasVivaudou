@@ -15,5 +15,18 @@
   },
   "about": {
     "biography": "Salut, moi c'est Nicolas Vivaudou — photographe français passionné par la lumière, les visages et les points de vue uniques.\n\nJe suis spécialisé en portrait et photographie par drone, ce qui me permet de capturer aussi bien l'intime que les paysages immenses. Mon objectif : Créer des images fortes, sincères, et esthétiques, qui racontent quelque chose de vrai.\n\nMes voyages et ma curiosité nourrissent mon regard. Que ce soit en explorant une ville ou en survolant un lieu isolé, je suis toujours à la recherche de lumière, de textures et d'instants authentiques.\n\nJe suis ouvert à tout nouveau projet, collaboration créative ou opportunité qui me pousse à voir autrement. N'hésitez pas à me contacter via le formulaire ou sur Instagram @nicolasvivaudou — au plaisir d'échanger avec vous."
+  },
+  "contact": {
+    "title": "CONTACTEZ-MOI",
+    "subtitle": "Vous avez une idée de projet ? Réalisons-le ensemble !",
+    "email": "Email",
+    "location": "Localisation",
+    "locationValue": "Montréal, Canada",
+    "form": {
+      "name": "Votre nom *",
+      "email": "Votre email *",
+      "message": "Votre message *",
+      "submit": "Envoyer le message"
+    }
   }
 }

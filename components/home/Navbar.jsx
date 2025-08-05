@@ -16,6 +16,18 @@ export default function Navbar() {
     router.replace(pathname, {locale: newLocale});
   };
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    // Close mobile menu if open
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="flex items-center justify-between p-6 md:p-8 relative z-50">
       {/* Logo/Name */}
@@ -26,18 +38,18 @@ export default function Navbar() {
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center justify-center flex-1">
         <div className="flex items-center space-x-8 backdrop-blur-md rounded-full px-8 py-3 border border-black" style={{backgroundColor: 'rgba(251, 191, 36, 0.3)'}}>
-          <Link href="/portfolio" className="text-white hover:text-blue-300 transition-colors">
+          <button onClick={() => scrollToSection('portfolio-section')} className="text-white hover:text-blue-300 transition-colors">
             {t('nav.portfolio')}
-          </Link>
-          <Link href="/about" className="text-white hover:text-blue-300 transition-colors">
+          </button>
+          <button onClick={() => scrollToSection('about-section')} className="text-white hover:text-blue-300 transition-colors">
             {t('nav.about')}
-          </Link>
-          <Link href="/services" className="text-white hover:text-blue-300 transition-colors">
+          </button>
+          <button onClick={() => scrollToSection('services-section')} className="text-white hover:text-blue-300 transition-colors">
             {t('nav.services')}
-          </Link>
-          <Link href="/contact" className="text-white hover:text-blue-300 transition-colors">
+          </button>
+          <button onClick={() => scrollToSection('contact-section')} className="text-white hover:text-blue-300 transition-colors">
             {t('nav.contact')}
-          </Link>
+          </button>
           
           {/* Language Selector */}
           <div className="relative">
@@ -103,18 +115,18 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-black bg-opacity-90 backdrop-blur-md z-20">
           <nav className="flex flex-col space-y-4 p-6">
-            <Link href="/portfolio" className="text-white hover:text-blue-300 transition-colors">
+            <button onClick={() => scrollToSection('portfolio-section')} className="text-white hover:text-blue-300 transition-colors text-left">
               {t('nav.portfolio')}
-            </Link>
-            <Link href="/about" className="text-white hover:text-blue-300 transition-colors">
+            </button>
+            <button onClick={() => scrollToSection('about-section')} className="text-white hover:text-blue-300 transition-colors text-left">
               {t('nav.about')}
-            </Link>
-            <Link href="/services" className="text-white hover:text-blue-300 transition-colors">
+            </button>
+            <button onClick={() => scrollToSection('services-section')} className="text-white hover:text-blue-300 transition-colors text-left">
               {t('nav.services')}
-            </Link>
-            <Link href="/contact" className="text-white hover:text-blue-300 transition-colors">
+            </button>
+            <button onClick={() => scrollToSection('contact-section')} className="text-white hover:text-blue-300 transition-colors text-left">
               {t('nav.contact')}
-            </Link>
+            </button>
             <div className="flex items-center justify-between pt-4 border-t border-white border-opacity-20">
               <div className="flex items-center space-x-2">
                 <span className="text-white">{locale.toUpperCase()}</span>

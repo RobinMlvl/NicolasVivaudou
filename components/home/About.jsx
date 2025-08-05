@@ -7,6 +7,7 @@ export default function About() {
 
   return (
     <section 
+      id="about-section"
       className="relative h-screen overflow-hidden"
       style={{
         backgroundImage: 'url(/portfolio-home/about.jpg)',

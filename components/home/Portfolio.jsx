@@ -8,7 +8,7 @@ export default function Portfolio() {
   const t = useTranslations();
 
   return (
-    <section className="py-16 px-6 bg-gray-50">
+    <section id="portfolio-section" className="py-16 px-6 bg-gray-50">
       <div className="mx-auto">
         {/* Header */}
         <div className="mb-20 text-center">
