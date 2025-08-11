@@ -472,7 +472,7 @@ export default function PortfolioPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                     <h3 className="text-lg font-medium text-gray-900 mb-2">Erreur de lecture vidéo</h3>
-                    <p className="text-gray-600 mb-4">La vidéo n'a pas pu être chargée</p>
+                    <p className="text-gray-600 mb-4">La vidéo n&apos;a pas pu être chargée</p>
                     <button 
                       onClick={() => setVideoError(false)}
                       className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
