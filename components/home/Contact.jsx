@@ -212,7 +212,8 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-yellow-500 text-black px-10 py-4 text-base font-semibold hover:bg-yellow-400 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="backdrop-blur-md rounded-full px-8 py-3 text-white font-medium hover:text-yellow-300 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed border border-yellow-400"
+                style={{backgroundColor: 'rgb(251, 191, 36)'}}
               >
                 {isSubmitting ? 'Envoi en cours...' : t('contact.form.submit')}
               </button>
