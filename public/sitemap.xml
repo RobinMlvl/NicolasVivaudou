@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Page d'accueil française (défaut) -->
+  <url>
+    <loc>https://nicolasvivaudou.com/</loc>
+    <lastmod>2025-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://nicolasvivaudou.com/en"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://nicolasvivaudou.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasvivaudou.com/"/>
+  </url>
+  
+  <!-- Page d'accueil anglaise -->
+  <url>
+    <loc>https://nicolasvivaudou.com/en</loc>
+    <lastmod>2025-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://nicolasvivaudou.com/en"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://nicolasvivaudou.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasvivaudou.com/"/>
+  </url>
+  
+  <!-- Portfolio français -->
+  <url>
+    <loc>https://nicolasvivaudou.com/portfolio</loc>
+    <lastmod>2025-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://nicolasvivaudou.com/en/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://nicolasvivaudou.com/portfolio"/>
+  </url>
+  
+  <!-- Portfolio anglais -->
+  <url>
+    <loc>https://nicolasvivaudou.com/en/portfolio</loc>
+    <lastmod>2025-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://nicolasvivaudou.com/en/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://nicolasvivaudou.com/portfolio"/>
+  </url>
+
+</urlset>

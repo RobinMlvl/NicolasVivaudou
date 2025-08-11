@@ -1,0 +1,49 @@
+# robots.txt - Portfolio Nicolas Vivaudou
+
+User-agent: *
+Allow: /
+
+# Pages importantes à indexer
+Allow: /
+Allow: /en
+Allow: /fr
+Allow: /portfolio
+Allow: /en/portfolio
+Allow: /fr/portfolio
+
+# Pages admin - bloquer l'indexation
+Disallow: /admin
+Disallow: /admin/
+Disallow: /*/admin
+Disallow: /*/admin/
+
+# API routes - bloquer l'indexation  
+Disallow: /api/
+Disallow: /*/api/
+
+# Fichiers système Next.js
+Disallow: /_next/
+Disallow: /_vercel/
+Disallow: /favicon.ico
+
+# Fichiers techniques
+Disallow: /*.json$
+Disallow: /sitemap*.xml
+Allow: /sitemap.xml
+
+# Images et médias - autoriser (important pour le référencement portfolio)
+Allow: /images/
+Allow: /*.jpg
+Allow: /*.jpeg  
+Allow: /*.png
+Allow: /*.webp
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.mp4
+Allow: /*.webm
+
+# Sitemap
+Sitemap: https://nicolasvivaudou.com/sitemap.xml
+
+# Crawl-delay pour éviter la surcharge serveur
+Crawl-delay: 1
