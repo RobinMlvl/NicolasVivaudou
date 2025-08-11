@@ -11,6 +11,20 @@ const nextConfig = {
       bodySizeLimit: '1gb' // 1GB pour permettre les gros fichiers vidéo
     }
   },
+  // Headers pour SEO et performance
+  async headers() {
+    return [
+      {
+        source: '/((?!api|_next|_vercel|admin).*)',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow',
+          },
+        ],
+      },
+    ];
+  },
   // Configuration des images externes autorisées
   images: {
     domains: [
