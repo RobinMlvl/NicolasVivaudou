@@ -37,7 +37,7 @@ export default function Portfolio() {
               alt="Portfolio item 1"
               fill
               className="object-cover"
-              priority
+              loading="lazy"
             />
           </div>
           {/* Item 2 */}
@@ -47,7 +47,7 @@ export default function Portfolio() {
               alt="Portfolio item 2"
               fill
               className="object-cover"
-              priority
+              loading="lazy"
             />
           </div>
           {/* Item 3 */}
@@ -57,7 +57,7 @@ export default function Portfolio() {
               alt="Portfolio item 3"
               fill
               className="object-cover"
-              priority
+              loading="lazy"
             />
           </div>
           {/* Item 4 */}
@@ -67,6 +67,7 @@ export default function Portfolio() {
               alt="Portfolio item 4"
               fill
               className="object-cover"
+              loading="lazy"
             />
           </div>
           {/* Item 5 */}
@@ -76,6 +77,7 @@ export default function Portfolio() {
               alt="Portfolio item 5"
               fill
               className="object-cover"
+              loading="lazy"
             />
           </div>
           {/* Item 6 - Video */}
@@ -97,6 +99,7 @@ export default function Portfolio() {
               alt="Portfolio item 7"
               fill
               className="object-cover"
+              loading="lazy"
             />
           </div>
         </div>

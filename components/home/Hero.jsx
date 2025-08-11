@@ -9,7 +9,8 @@ export default function Hero() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
+        poster="/portfolio-home/about.jpg"
       >
         <source src="/DIAPOSLIM.mp4" type="video/mp4" />
       </video>
