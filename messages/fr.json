@@ -14,7 +14,7 @@
     "seeAll": "Voir tout"
   },
   "about": {
-    "biography": "Salut, moi c'est Nicolas Vivaudou — photographe français passionné par la lumière, les visages et les points de vue uniques.\n\nJe suis spécialisé en portrait et photographie par drone, ce qui me permet de capturer aussi bien l'intime que les paysages immenses. Mon objectif : Créer des images fortes, sincères, et esthétiques, qui racontent quelque chose de vrai.\n\nMes voyages et ma curiosité nourrissent mon regard. Que ce soit en explorant une ville ou en survolant un lieu isolé, je suis toujours à la recherche de lumière, de textures et d'instants authentiques.\n\nJe suis ouvert à tout nouveau projet, collaboration créative ou opportunité qui me pousse à voir autrement. N'hésitez pas à me contacter via le formulaire ou sur Instagram @nicolasvivaudou — au plaisir d'échanger avec vous."
+    "biography": "Salut, moi c'est Nicolas Vivaudou — photographe français passionné par la lumière, les visages et les points de vue uniques.\n\nJe suis spécialisé en portrait et photographie par drone, ce qui me permet de capturer aussi bien l'intime que les paysages immenses. Mon objectif : Créer des images fortes, sincères, et esthétiques, qui racontent quelque chose de vrai.\n\nMes voyages et ma curiosité nourrissent mon regard. Que ce soit en explorant une ville ou en survolant un lieu isolé, je suis toujours à la recherche de lumière, de textures et d'instants authentiques."
   },
   "contact": {
     "title": "CONTACTEZ-MOI",
@@ -26,7 +26,71 @@
       "name": "Votre nom *",
       "email": "Votre email *",
       "message": "Votre message *",
-      "submit": "Envoyer le message"
+      "submit": "Envoyer le message",
+      "submitting": "Envoi en cours...",
+      "success": "Votre message a été envoyé avec succès ! Je vous répondrai dans les plus brefs délais.",
+      "error": {
+        "required": "Ce champ est requis",
+        "emailInvalid": "Format d'email invalide",
+        "messageTooShort": "Le message doit contenir au moins 10 caractères",
+        "network": "Erreur de connexion. Veuillez réessayer."
+      }
+    }
+  },
+  "admin": {
+    "title": "Administration",
+    "backToSite": "Retour au site",
+    "portfolio": {
+      "title": "Gestion du Portfolio",
+      "subtitle": "Ajoutez, modifiez et organisez vos photos de portfolio",
+      "stats": {
+        "totalPhotos": "Photos total",
+        "visiblePhotos": "Photos visibles",
+        "sections": "Sections de 20"
+      },
+      "actions": {
+        "refresh": "Actualiser",
+        "viewPublic": "Voir le portfolio public",
+        "dragToReorder": "Glissez-déposez pour réorganiser"
+      },
+      "upload": {
+        "title": "Ajouter des photos",
+        "dragDrop": "Glissez-déposez vos images ou cliquez pour sélectionner",
+        "addPhotos": "Ajoutez vos photos",
+        "dropHere": "Déposez vos images ici",
+        "supportedFormats": "Formats supportés: JPG, PNG, WEBP • Max 10MB par image",
+        "uploading": "Upload en cours...",
+        "tips": {
+          "optimization": "Les images seront automatiquement optimisées et redimensionnées.",
+          "format": "Images en haute résolution (min 1200px de largeur)."
+        }
+      },
+      "grid": {
+        "noPhotos": "Aucune photo",
+        "noPhotosDesc": "Commencez par ajouter des photos à votre portfolio",
+        "reorderInstructions": "Comment réorganiser vos photos :",
+        "reorderTip1": "Glissez-déposez les photos pour changer leur ordre",
+        "reorderTip2": "L'ordre ici détermine l'affichage sur la page portfolio",
+        "reorderTip3": "Les changements sont sauvegardés automatiquement"
+      },
+      "editor": {
+        "title": "Modifier la photo",
+        "preview": "Aperçu",
+        "photoTitle": "Titre de la photo",
+        "titlePlaceholder": "Donnez un titre à votre photo...",
+        "description": "Description",
+        "descriptionPlaceholder": "Décrivez cette photo...",
+        "position": "Position dans la grille",
+        "positionHelp": "Plus le nombre est petit, plus la photo apparaîtra en premier",
+        "visibility": "Photo visible sur le portfolio",
+        "visibilityHelp": "Décochez pour masquer cette photo du portfolio public",
+        "information": "Informations",
+        "createdOn": "Créée le:",
+        "format": "Format:",
+        "url": "URL:",
+        "cancel": "Annuler",
+        "save": "Enregistrer"
+      }
     }
   }
 }

@@ -42,9 +42,6 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${quicksand.variable} ${roboto.variable} antialiased`}>
         <NextIntlClientProvider>
-          <div className="fixed top-0 left-0 right-0 z-50">
-            <Navbar />
-          </div>
           {children}
         </NextIntlClientProvider>
       </body>

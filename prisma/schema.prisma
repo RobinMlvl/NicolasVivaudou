@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model PortfolioImage {
+  id            String   @id @default(cuid())
+  title         String?
+  description   String?
+  imageUrl      String
+  imagePath     String
+  orderPosition Int      @default(0)
+  visible       Boolean  @default(true)
+  type          String   @default("image")
+  category      String   @default("drone")
+  fileSize      String?
+  fileName      String?
+  mimeType      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("portfolio_images")
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contact_messages")
+}

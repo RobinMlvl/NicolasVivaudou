@@ -15,35 +15,35 @@ This is a Next.js 15 multilingual portfolio application using App Router archite
 
 - **Framework**: Next.js 15.4.5 with React 19
 - **Internationalization**: next-intl with French (default) and English locales
-- **Styling**: Tailwind CSS v4 with PostCSS
-- **Fonts**: Quicksand and Roboto from Google Fonts
-- **Linting**: ESLint with Next.js core web vitals configuration
+- **Styling**: Tailwind CSS v4 with PostCSS and inline theming
+- **Fonts**: Quicksand (headings) and Roboto (body text) from Google Fonts
+- **Linting**: ESLint with flat config and Next.js core web vitals rules
 
 ### Internationalization Architecture
 
-- **Middleware**: `middleware.ts` handles locale detection and routing using next-intl
-- **Routing**: Configured for French (`fr`) as default locale and English (`en`)
-- **Locale Structure**: `app/[locale]/` contains localized pages and layouts
+The i18n system uses next-intl with a centralized routing configuration:
+
+- **Core Configuration**: `src/i18n/routing.ts` defines supported locales (`fr`, `en`) with French as default
+- **Middleware**: `middleware.ts` handles automatic locale detection and routing
+- **Request Handling**: `src/i18n/request.ts` manages server-side locale context
+- **Navigation**: `src/i18n/navigation.ts` provides typed navigation helpers
 - **Messages**: Translation files in `messages/fr.json` and `messages/en.json`
-- **Configuration**: 
-  - `src/i18n/routing.ts` - Locale routing configuration
-  - `src/i18n/request.ts` - Request-time locale handling
-  - `src/i18n/navigation.ts` - Internationalized navigation helpers
 
-### Key Files and Structure
+The routing follows the pattern `/{locale}/path` with middleware matching `/(fr|en)/:path*` and handling root path redirects.
 
-- `app/[locale]/layout.js` - Localized root layout with font configuration and navbar
-- `app/[locale]/page.js` - Localized homepage component
-- `components/home/` - Home page components (Hero, About, Portfolio, Navbar)
-- `components/portfolio/` - Portfolio-specific components
-- `middleware.ts` - next-intl middleware for locale routing
-- `next.config.mjs` - Next.js configuration with next-intl plugin
-- `jsconfig.json` - Path mapping with `@/*` alias
+### Component Architecture
+
+- **Layout System**: `app/[locale]/layout.js` provides the root layout with:
+  - Font variable injection (`--font-quicksand`, `--font-roboto`)
+  - NextIntlClientProvider wrapper for client-side translations
+  - Fixed navbar positioning with z-index management
+- **Home Components**: Modular components in `components/home/` (Hero, About, Services, Portfolio, Contact, Footer, Navbar)
+- **Styling System**: Tailwind v4 with custom CSS variables in `globals.css` and inline theme configuration
 
 ### Development Notes
 
-- The project uses Turbopack in development for faster hot reloading
-- Font optimization uses Quicksand (variable weight) and Roboto fonts
-- Locale detection happens at middleware level with fallback to French
-- Path aliases are configured with `@/*` pointing to project root
-- ESLint uses flat config format with Next.js core web vitals rules
+- Uses Turbopack in development for faster hot reloading
+- Path aliases configured with `@/*` pointing to project root in `jsconfig.json`
+- ESLint uses flat config format (`eslint.config.mjs`) with FlatCompat for Next.js rules
+- PostCSS configured with Tailwind CSS v4 plugin
+- Font optimization with variable weights: Quicksand (300-700) and Roboto (300-700)

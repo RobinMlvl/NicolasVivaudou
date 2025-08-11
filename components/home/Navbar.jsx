@@ -37,7 +37,7 @@ export default function Navbar() {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center justify-center flex-1">
-        <div className="flex items-center space-x-8 backdrop-blur-md rounded-full px-8 py-3 border border-black" style={{backgroundColor: 'rgba(251, 191, 36, 0.3)'}}>
+        <div className="flex items-center space-x-8 backdrop-blur-md rounded-full px-6 py-2" style={{backgroundColor: 'rgba(251, 191, 36, 0.3)'}}>
           <button onClick={() => scrollToSection('portfolio-section')} className="text-white hover:text-blue-300 transition-colors">
             {t('nav.portfolio')}
           </button>
