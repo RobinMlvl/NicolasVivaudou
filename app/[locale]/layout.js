@@ -76,6 +76,15 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={
+          locale === 'fr' 
+            ? 'Photographe professionnel spécialisé en portrait et photographie par drone. Découvrez mon portfolio créatif à Montréal. Services photo professionnels pour particuliers et entreprises.'
+            : 'Professional photographer specializing in portrait and drone photography. Discover my creative portfolio in Montreal. Professional photo services for individuals and businesses.'
+        } />
+      </head>
       <body className={`${quicksand.variable} ${roboto.variable} antialiased`}>
         <NextIntlClientProvider>
           {children}

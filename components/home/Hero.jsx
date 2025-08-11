@@ -10,7 +10,6 @@ export default function Hero() {
         loop
         playsInline
         preload="metadata"
-        poster="/portfolio-home/about.jpg"
       >
         <source src="/DIAPOSLIM.mp4" type="video/mp4" />
       </video>
