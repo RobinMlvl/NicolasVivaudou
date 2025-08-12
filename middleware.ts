@@ -5,7 +5,7 @@ import { jwtVerify } from 'jose';
 
 const intlMiddleware = createMiddleware(routing);
 
-const JWT_SECRET = new TextEncoder().encode('super-secret-key-for-admin-session-2024');
+const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET_KEY || 'fallback-secret-key');
 
 async function verifyAdminSession(request: NextRequest) {
   const token = request.cookies.get('admin-session')?.value;

@@ -4,12 +4,17 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { SignJWT } from 'jose';
 
-// Identifiants hardcodés côté serveur
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'admin';
+// Identifiants depuis les variables d'environnement
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
-// Clé secrète pour JWT (en production, utiliser une vraie clé secrète)
-const JWT_SECRET = new TextEncoder().encode('super-secret-key-for-admin-session-2024');
+// Clé secrète pour JWT depuis les variables d'environnement
+const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET_KEY);
+
+// Validation des variables d'environnement
+if (!ADMIN_USERNAME || !ADMIN_PASSWORD || !process.env.JWT_SECRET_KEY) {
+  throw new Error('Variables d\'environnement manquantes: ADMIN_USERNAME, ADMIN_PASSWORD et JWT_SECRET_KEY sont requises');
+}
 
 export async function loginAction(formData) {
   const username = formData.get('username');

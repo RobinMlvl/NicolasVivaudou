@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import PortfolioNavbar from '../../../components/portfolio/PortfolioNavbar';
+import LazyImage from '../../../components/LazyImage';
 
 export default function PortfolioPage() {
   const params = useParams();
   const locale = params.locale || 'fr';
   
   const [allPhotos, setAllPhotos] = useState([]);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
   
   // États pour chaque catégorie
   const [showDrone, setShowDrone] = useState(false);
@@ -89,50 +90,9 @@ export default function PortfolioPage() {
     };
   }, []);
 
-  const preloadImages = (imageUrls) => {
-    return new Promise((resolve) => {
-      let loaded = 0;
-      const total = imageUrls.length;
-      
-      if (total === 0) {
-        resolve();
-        return;
-      }
-      
-      // Précharger par petits lots pour éviter de surcharger le navigateur
-      const batchSize = 3;
-      let currentBatch = 0;
-      
-      const loadBatch = () => {
-        const start = currentBatch * batchSize;
-        const end = Math.min(start + batchSize, total);
-        
-        for (let i = start; i < end; i++) {
-          const img = new window.Image();
-          img.onload = img.onerror = () => {
-            loaded++;
-            if (loaded === total) {
-              setImagesLoaded(true);
-              resolve();
-            } else if (loaded === end && end < total) {
-              // Charger le prochain lot après un petit délai
-              setTimeout(() => {
-                currentBatch++;
-                loadBatch();
-              }, 100);
-            }
-          };
-          img.src = imageUrls[i];
-        }
-      };
-      
-      loadBatch();
-    });
-  };
-
   const fetchAllPhotos = async () => {
     try {
-      setImagesLoaded(false);
+      setDataLoaded(false);
       
       const response = await fetch('/api/portfolio');
       const data = await response.json();
@@ -140,15 +100,12 @@ export default function PortfolioPage() {
       const visiblePhotos = data.filter(photo => photo.visible !== false);
       
       setAllPhotos(visiblePhotos);
-      
-      // Précharger TOUTES les images de TOUTES les catégories
-      const allImageUrls = visiblePhotos.map(photo => photo.imageUrl);
-      await preloadImages(allImageUrls);
+      setDataLoaded(true);
       
     } catch (error) {
       console.error('Erreur lors du chargement des photos:', error);
       setAllPhotos([]);
-      setImagesLoaded(true);
+      setDataLoaded(true);
     }
   };
 
@@ -242,28 +199,14 @@ export default function PortfolioPage() {
                   hover:scale-[1.02] transition-transform duration-300 cursor-pointer
                   ${item.colSpan} ${item.rowSpan}
                 `}
-                onClick={() => openLightbox(item, index)}
               >
-                {item.type === 'video' ? (
-                  <video 
-                    className="absolute inset-0 w-full h-full object-cover"
-                    autoPlay muted loop playsInline
-                    preload="auto"
-                    onError={(e) => console.error('Erreur vidéo:', e)}
-                    onLoadedData={() => console.log('Preview vidéo chargée:', item.title)}
-                    style={{ filter: 'none' }}
-                  >
-                    <source src={item.imageUrl} type="video/mp4" />
-                  </video>
-                ) : (
-                  <img
-                    src={item.imageUrl}
-                    alt={item.title || 'Portfolio image'}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="eager"
-                    decoding="sync"
-                  />
-                )}
+                <LazyImage
+                  src={item.imageUrl}
+                  alt={item.title || 'Portfolio image'}
+                  className="w-full h-full"
+                  onClick={() => openLightbox(item, index)}
+                  isVideo={item.type === 'video'}
+                />
               </div>
             ))}
           </div>
@@ -280,28 +223,14 @@ export default function PortfolioPage() {
                   hover:scale-[1.02] transition-transform duration-300 cursor-pointer
                   ${item.colSpan} ${item.rowSpan}
                 `}
-                onClick={() => openLightbox(item, index)}
               >
-                {item.type === 'video' ? (
-                  <video 
-                    className="absolute inset-0 w-full h-full object-cover"
-                    autoPlay muted loop playsInline
-                    preload="auto"
-                    onError={(e) => console.error('Erreur vidéo:', e)}
-                    onLoadedData={() => console.log('Preview vidéo chargée:', item.title)}
-                    style={{ filter: 'none' }}
-                  >
-                    <source src={item.imageUrl} type="video/mp4" />
-                  </video>
-                ) : (
-                  <img
-                    src={item.imageUrl}
-                    alt={item.title || 'Portfolio image'}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="eager"
-                    decoding="sync"
-                  />
-                )}
+                <LazyImage
+                  src={item.imageUrl}
+                  alt={item.title || 'Portfolio image'}
+                  className="w-full h-full"
+                  onClick={() => openLightbox(item, index)}
+                  isVideo={item.type === 'video'}
+                />
               </div>
             ))}
           </div>
@@ -318,28 +247,14 @@ export default function PortfolioPage() {
                   hover:scale-[1.02] transition-transform duration-300 cursor-pointer
                   ${item.colSpan} ${item.rowSpan}
                 `}
-                onClick={() => openLightbox(item, index)}
               >
-                {item.type === 'video' ? (
-                  <video 
-                    className="absolute inset-0 w-full h-full object-cover"
-                    autoPlay muted loop playsInline
-                    preload="auto"
-                    onError={(e) => console.error('Erreur vidéo:', e)}
-                    onLoadedData={() => console.log('Preview vidéo chargée:', item.title)}
-                    style={{ filter: 'none' }}
-                  >
-                    <source src={item.imageUrl} type="video/mp4" />
-                  </video>
-                ) : (
-                  <img
-                    src={item.imageUrl}
-                    alt={item.title || 'Portfolio image'}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="eager"
-                    decoding="sync"
-                  />
-                )}
+                <LazyImage
+                  src={item.imageUrl}
+                  alt={item.title || 'Portfolio image'}
+                  className="w-full h-full"
+                  onClick={() => openLightbox(item, index)}
+                  isVideo={item.type === 'video'}
+                />
               </div>
             ))}
           </div>
@@ -356,35 +271,21 @@ export default function PortfolioPage() {
                   hover:scale-[1.02] transition-transform duration-300 cursor-pointer
                   ${item.colSpan} ${item.rowSpan}
                 `}
-                onClick={() => openLightbox(item, index)}
               >
-                {item.type === 'video' ? (
-                  <video 
-                    className="absolute inset-0 w-full h-full object-cover"
-                    autoPlay muted loop playsInline
-                    preload="auto"
-                    onError={(e) => console.error('Erreur vidéo:', e)}
-                    onLoadedData={() => console.log('Preview vidéo chargée:', item.title)}
-                    style={{ filter: 'none' }}
-                  >
-                    <source src={item.imageUrl} type="video/mp4" />
-                  </video>
-                ) : (
-                  <img
-                    src={item.imageUrl}
-                    alt={item.title || 'Portfolio image'}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="eager"
-                    decoding="sync"
-                  />
-                )}
+                <LazyImage
+                  src={item.imageUrl}
+                  alt={item.title || 'Portfolio image'}
+                  className="w-full h-full"
+                  onClick={() => openLightbox(item, index)}
+                  isVideo={item.type === 'video'}
+                />
               </div>
             ))}
           </div>
         )}
 
         {/* Message si aucune photo - seulement après chargement */}
-        {imagesLoaded && dronePhotos.length === 0 && diaryPhotos.length === 0 && portraitPhotos.length === 0 && videoPhotos.length === 0 && (
+        {dataLoaded && dronePhotos.length === 0 && diaryPhotos.length === 0 && portraitPhotos.length === 0 && videoPhotos.length === 0 && (
           <div className="flex items-center justify-center h-screen">
             <div className="text-center">
               <svg className="mx-auto h-16 w-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

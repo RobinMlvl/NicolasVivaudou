@@ -60,7 +60,7 @@ export default function PhotoGrid({ photos, onEdit, onDelete, onReorder, title }
   }
 
   return (
-    <div className="rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 p-6">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-gray-900" style={{fontFamily: 'var(--font-quicksand)'}}>
           {title || `Photos du portfolio (${photos.length})`}
@@ -70,11 +70,11 @@ export default function PhotoGrid({ photos, onEdit, onDelete, onReorder, title }
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-4">
         {photos.map((photo, index) => (
           <div
             key={photo.id}
-            className="group relative bg-gray-100 rounded-lg overflow-hidden cursor-move transition-transform hover:scale-105"
+            className="group relative bg-gray-100 rounded-lg overflow-hidden cursor-move transition-transform hover:scale-105 touch-manipulation"
             draggable
             onDragStart={(e) => handleDragStart(e, photo)}
             onDragOver={handleDragOver}
@@ -101,35 +101,33 @@ export default function PhotoGrid({ photos, onEdit, onDelete, onReorder, title }
                 />
               )}
               
-              {/* Overlay avec actions */}
-              <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-90 transition-all duration-200 flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex space-x-2">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onEdit(photo);
-                    }}
-                    className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-50 transition-colors"
-                    title="Modifier"
-                  >
-                    <svg className="h-4 w-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                    </svg>
-                  </button>
-                  
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onDelete(photo.id);
-                    }}
-                    className="p-2 bg-red-500 rounded-full shadow-lg hover:bg-red-600 transition-colors"
-                    title="Supprimer"
-                  >
-                    <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                  </button>
-                </div>
+              {/* Actions - visibles sur mobile, hover sur desktop */}
+              <div className="absolute bottom-2 left-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 flex space-x-2">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onEdit(photo);
+                  }}
+                  className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-50 transition-colors touch-manipulation"
+                  title="Modifier"
+                >
+                  <svg className="h-4 w-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                </button>
+                
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onDelete(photo.id);
+                  }}
+                  className="p-2 bg-red-500 rounded-full shadow-lg hover:bg-red-600 transition-colors touch-manipulation"
+                  title="Supprimer"
+                >
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </button>
               </div>
 
               {/* Badge de position */}
@@ -150,6 +148,7 @@ export default function PhotoGrid({ photos, onEdit, onDelete, onReorder, title }
                   </div>
                 )}
               </div>
+
             </div>
 
             {/* Info de la photo */}

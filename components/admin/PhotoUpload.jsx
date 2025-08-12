@@ -156,20 +156,30 @@ export default function PhotoUpload({ onUploadComplete }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4" style={{fontFamily: 'var(--font-quicksand)'}}>
-        Ajouter des photos
-      </h3>
+    <div>
+      <div className="flex items-center space-x-3 mb-6">
+        <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-green-400 to-green-500 rounded-xl shadow-md">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent" style={{fontFamily: 'var(--font-quicksand)'}}>
+            Ajouter des médias
+          </h3>
+          <p className="text-sm text-gray-600">Images et vidéos pour votre portfolio</p>
+        </div>
+      </div>
       
-      {/* Sélecteur de catégorie */}
+      {/* Sélecteur de catégorie avec style premium */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Catégorie
+        <label className="block text-sm font-medium text-gray-700 mb-3">
+          Catégorie du média
         </label>
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 bg-white transition-all duration-200 font-medium"
         >
           <option value="drone">🚁 Drone</option>
           <option value="diary">📖 Diary</option>
@@ -180,12 +190,12 @@ export default function PhotoUpload({ onUploadComplete }) {
       
       <div
         className={`
-          border-2 border-dashed rounded-lg p-8 text-center transition-colors
+          border-2 border-dashed rounded-xl p-8 text-center transition-all duration-200
           ${isDragging 
-            ? 'border-blue-400 bg-blue-50' 
-            : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
+            ? 'border-yellow-400 bg-yellow-50 shadow-lg' 
+            : 'border-gray-300 bg-gradient-to-br from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200'
           }
-          ${uploading ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
+          ${uploading ? 'pointer-events-none opacity-50' : 'cursor-pointer hover:shadow-md'}
         `}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
@@ -203,9 +213,9 @@ export default function PhotoUpload({ onUploadComplete }) {
               {uploadMessage || 'Upload en cours...'}
             </p>
             
-            <div className="w-full bg-gray-200 rounded-full h-2">
+            <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div 
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                className="bg-gradient-to-r from-yellow-400 to-yellow-500 h-2.5 rounded-full transition-all duration-300 shadow-sm"
                 style={{ width: `${uploadProgress}%` }}
               ></div>
             </div>
@@ -251,10 +261,20 @@ export default function PhotoUpload({ onUploadComplete }) {
         </div>
       )}
 
-      <div className="mt-4 text-sm text-gray-600">
-        <p>💡 <strong>Images:</strong> Compression automatique à max 3MB et 2560px (qualité 92%).</p>
-        <p>🎬 <strong>Vidéos:</strong> Upload direct sans compression pour préserver la qualité originale.</p>
-        <p>📊 <strong>Tailles:</strong> Images max 50MB • Vidéos max ~5GB (limite Supabase).</p>
+      <div className="mt-6 p-4 bg-gradient-to-r from-gray-50 to-gray-100/50 border border-gray-200/50 rounded-lg">
+        <div className="flex">
+          <svg className="h-5 w-5 text-gray-400 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div>
+            <h4 className="text-sm font-medium text-gray-900 mb-2">Informations sur l'upload :</h4>
+            <ul className="text-sm text-gray-600 space-y-1">
+              <li>💡 <strong>Images:</strong> Compression automatique à max 3MB et 2560px (qualité 92%)</li>
+              <li>🎬 <strong>Vidéos:</strong> Upload direct sans compression pour préserver la qualité originale</li>
+              <li>📊 <strong>Tailles:</strong> Images max 50MB • Vidéos max ~5GB (limite Supabase)</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

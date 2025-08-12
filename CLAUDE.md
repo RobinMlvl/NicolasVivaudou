@@ -24,7 +24,7 @@ This is a Next.js 15 multilingual portfolio application using App Router archite
 - **Storage**: Supabase for image/video file storage with compression support
 - **Styling**: Tailwind CSS v4 with PostCSS and inline theming
 - **Fonts**: Quicksand (headings) and Roboto (body text) from Google Fonts
-- **Email**: Resend for contact form emails
+- **Email**: Resend for contact form notifications and confirmations
 - **Linting**: ESLint with flat config and Next.js core web vitals rules
 
 ### Internationalization Architecture
@@ -61,10 +61,23 @@ The routing follows the pattern `/{locale}/path` with middleware matching `/(fr|
 
 ### Admin System
 
-- **Admin routes**: `/[locale]/admin/*` with protected layout
+- **Authentication**: JWT-based with hardcoded credentials (`nicolasvivaudou7893` / `bidkoc-gajti6-sIzzug`)
+- **Admin routes**: `/[locale]/admin/*` with protected layout and middleware authentication
 - **Portfolio management**: Upload, edit, reorder, delete images/videos with drag-and-drop
 - **Contact management**: View and mark contact messages as read
 - **Features**: Real-time image optimization, video compression, batch operations
+
+### Email System (Resend)
+
+- **Configuration**: Requires `RESEND_API_KEY` and `NOTIFICATION_EMAIL` in environment variables
+- **Notification emails**: Sent to `malaval.robin@hotmail.fr` when contact form is submitted
+- **Confirmation emails**: Sent to users confirming their message was received
+- **Templates**: Professional HTML templates with responsive design and branding
+- **Testing**: Test endpoint at `/api/test-email` for configuration verification
+- **Files**: 
+  - `lib/email.js`: Email templates and sending functions
+  - `app/api/contact/route.js`: Contact form API with email integration
+  - `app/api/test-email/route.js`: Email testing and configuration check
 
 ### Development Notes
 
