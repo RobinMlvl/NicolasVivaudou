@@ -400,9 +400,14 @@ export default function PortfolioPage() {
       {/* Modal Lightbox */}
       {isLightboxOpen && selectedImage && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center"
           onClick={closeLightbox}
         >
+          {/* Backdrop with blur effect */}
+          <div 
+            className="absolute inset-0 backdrop-blur-sm"
+            style={{backgroundColor: 'rgba(0, 0, 0, 0.7)'}}
+          ></div>
           {/* Contenu du modal */}
           <div 
             className="relative max-w-screen-xl max-h-screen-xl w-full h-full flex items-center justify-center p-4"
@@ -491,24 +496,6 @@ export default function PortfolioPage() {
               )}
             </div>
 
-            {/* Informations de l'image */}
-            <div className="absolute bottom-4 left-4 right-4 text-center">
-              {selectedImage.title && (
-                <h3 className="text-white text-lg font-semibold mb-2" style={{fontFamily: 'var(--font-quicksand)'}}>
-                  {selectedImage.title}
-                </h3>
-              )}
-              {selectedImage.description && (
-                <p className="text-gray-300 text-sm mb-2">
-                  {selectedImage.description}
-                </p>
-              )}
-              {getCurrentCategoryPhotos().length > 1 && (
-                <p className="text-gray-400 text-xs">
-                  {currentImageIndex + 1} / {getCurrentCategoryPhotos().length}
-                </p>
-              )}
-            </div>
           </div>
         </div>
       )}

@@ -3,8 +3,9 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { Link } from '../../../src/i18n/navigation';
 import { usePathname, useParams } from 'next/navigation';
+import LogoutButton from './LogoutButton';
 
-export default function AdminLayout({ children }) {
+export default function AdminLocaleLayout({ children }) {
   const pathname = usePathname();
   const params = useParams();
   const locale = params.locale || 'fr';
@@ -20,8 +21,11 @@ export default function AdminLayout({ children }) {
                   ← Retour au site
                 </Link>
               </div>
-              <div className="text-sm text-gray-600">
-                Dashboard Admin
+              <div className="flex items-center space-x-4">
+                <div className="text-sm text-gray-600">
+                  Dashboard Admin
+                </div>
+                <LogoutButton />
               </div>
             </div>
           </div>

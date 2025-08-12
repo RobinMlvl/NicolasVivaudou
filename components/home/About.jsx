@@ -42,7 +42,7 @@ export default function About() {
             Nicolas Vivaudou
           </h2>
           <div className="p-8">
-            <div className="text-xl md:text-2xl leading-relaxed">
+            <div className="text-lg md:text-2xl leading-relaxed">
               {t('about.biography').split('\n\n').map((paragraph, index) => (
                 <p key={index} className="mb-6 last:mb-0">
                   {paragraph}
