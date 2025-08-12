@@ -32,7 +32,7 @@ export default function LoginForm() {
       <div className="space-y-4">
         <div>
           <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-            Nom d'utilisateur
+            Nom d&apos;utilisateur
           </label>
           <input
             id="username"
@@ -41,7 +41,7 @@ export default function LoginForm() {
             required
             disabled={isLoading}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 disabled:opacity-50"
-            placeholder="Nom d'utilisateur"
+            placeholder="Nom d&apos;utilisateur"
           />
         </div>
         
