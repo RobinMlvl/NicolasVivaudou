@@ -134,7 +134,7 @@ export default function PortfolioPage() {
     try {
       setImagesLoaded(false);
       
-      const response = await fetch('/api/admin/portfolio');
+      const response = await fetch('/api/portfolio');
       const data = await response.json();
       // Garder toutes les photos visibles (toutes catégories)
       const visiblePhotos = data.filter(photo => photo.visible !== false);
