@@ -74,6 +74,11 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Exclure toutes les routes API du middleware d'internationalisation  
+  if (pathname.startsWith('/api/')) {
+    return NextResponse.next();
+  }
+
   // Pour toutes les autres routes, utiliser le middleware d'internationalisation
   return intlMiddleware(request);
 }
