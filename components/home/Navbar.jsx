@@ -65,7 +65,7 @@ export default function Navbar() {
             
             {/* Language Dropdown */}
             {isLangOpen && (
-              <div className="absolute top-full mt-2 right-0 bg-yellow-400 bg-opacity-90 backdrop-blur-md rounded-lg py-2 min-w-16 border border-yellow-400">
+              <div style={{backgroundColor: 'rgba(251, 191, 36, 0.3)'}} className="absolute top-full mt-2 right-0 backdrop-blur-md rounded-lg py-2 min-w-16">
                 <button 
                   className="block w-full px-4 py-2 text-white hover:bg-yellow-500 hover:bg-opacity-50 transition-colors text-left"
                   onClick={() => {
