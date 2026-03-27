@@ -61,7 +61,7 @@ export async function POST(request) {
     const buffer = Buffer.from(arrayBuffer);
     
     // Upload vers Supabase Storage
-    await uploadImage(buffer, uniqueFileName);
+    await uploadImage(buffer, uniqueFileName, file.type);
     
     // Obtenir l'URL publique
     const publicUrl = getImagePublicUrl(uniqueFileName);
