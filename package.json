@@ -20,7 +20,7 @@
     "browser-image-compression": "^2.0.2",
     "dotenv": "^17.2.1",
     "jose": "^6.0.12",
-    "next": "15.4.5",
+    "next": "15.4.10",
     "next-intl": "^4.3.4",
     "prisma": "^6.13.0",
     "react": "19.1.0",
